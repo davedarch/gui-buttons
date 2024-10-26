@@ -1,28 +1,16 @@
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 import os
-import readline
-
-def complete(text, state):
-    # Get the current working directory
-    cwd = os.getcwd()
-    # List all files and directories in the current working directory
-    options = [f for f in os.listdir(cwd) if f.startswith(text)]
-    # Return the state-th completion option
-    return options[state] if state < len(options) else None
-
-def input_with_completion(prompt):
-    # Set the completer function
-    readline.set_completer(complete)
-    # Use tab for completion
-    readline.parse_and_bind('tab: complete')
-    # Get user input
-    return input(prompt)
 
 def add_file():
-    # Prompt the user for the file name with tab completion
-    file_name = input_with_completion("Enter the file name to add: ").strip()
+    cwd = os.getcwd()
+    files = os.listdir(cwd)
+    completer = WordCompleter(files, ignore_case=True)
+    file_name = prompt("Enter the file name to add: ", completer=completer)
     if file_name:
-        # Run the git add command with the specified file
-        os.system(f'git add "{file_name}"')
+        command = f'git add "{file_name}"'
+        print(f"Executing command: {command}")  # Print the command to be executed
+        os.system(command)
 
 if __name__ == "__main__":
     add_file()
