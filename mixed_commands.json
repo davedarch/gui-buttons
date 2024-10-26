@@ -1,0 +1,46 @@
+{
+  "buttons": [
+    {
+      "text": "List Directory",
+      "type": "shell",
+      "command": ["ls", "-la"],
+      "short_description": "List files",
+      "long_description": "Lists all files and directories with details"
+    },
+    {
+      "text": "Show Date",
+      "type": "shell",
+      "command": ["date"],
+      "short_description": "Show date",
+      "long_description": "Displays the current date and time"
+    },
+    {
+      "text": "Show Finder",
+      "type": "applescript",
+      "command": "tell application \"Finder\" to activate",
+      "short_description": "Activate Finder",
+      "long_description": "Activates the Finder application"
+    },
+    {
+      "text": "Hide Finder",
+      "type": "applescript",
+      "command": "tell application \"Finder\" to hide",
+      "short_description": "Hide Finder",
+      "long_description": "Hides the Finder application"
+    },
+    {
+      "text": "Show Safari",
+      "type": "applescript",
+      "command": "tell application \"Safari\" to activate",
+      "short_description": "Activate Safari",
+      "long_description": "Activates the Safari browser"
+    },
+    {
+      "text": "Ping Google",
+      "type": "shell",
+      "command": ["ping", "-c", "4", "google.com"],
+      "short_description": "Ping Google",
+      "long_description": "Pings Google to check connectivity"
+    }
+  ]
+}

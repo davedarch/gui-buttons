@@ -1,0 +1,4 @@
+requests==2.31.0
+numpy==1.25.2
+flask==2.3.3
+

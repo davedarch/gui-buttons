@@ -1,0 +1,19 @@
+{
+  "buttons": [
+    {
+      "text": "List Directory",
+      "type": "shell",
+      "command": ["ls", "-la"]
+    },
+    {
+      "text": "Show Date",
+      "type": "shell",
+      "command": ["date"]
+    },
+    {
+      "text": "Show Time",
+      "type": "shell",
+      "command": ["date", "+%T"]
+    }
+  ]
+}

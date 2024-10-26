@@ -1,0 +1,19 @@
+{
+    "buttons": [
+      {
+        "text": "Show Disk Usage",
+        "type": "shell",
+        "command": ["df", "-h"]
+      },
+      {
+        "text": "Show Memory Usage",
+        "type": "shell",
+        "command": ["free", "-h"]
+      },
+      {
+        "text": "List Running Processes",
+        "type": "shell",
+        "command": ["ps", "aux"]
+      }
+    ]
+  }

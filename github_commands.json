@@ -1,0 +1,39 @@
+{
+  "buttons": [
+    {
+      "text": "Initialize Git Repository",
+      "type": "shell",
+      "command": ["git", "init"],
+      "short_description": "Initialize Git repository",
+      "long_description": "Initialize a new Git repository locally if it isn't already initialized. This sets up the local Git structure in your folder."
+    },
+    {
+      "text": "Create GitHub Repository",
+      "type": "shell",
+      "command": ["gh", "repo", "create", "`basename \"$PWD\"`", "--public", "--source=.", "--remote=origin"],
+      "short_description": "Create GitHub repository",
+      "long_description": "Use `gh` to create a new GitHub repository. This command creates a new repository with the folder's name, makes it public, uses the current directory as the source, and sets up a remote named 'origin'."
+    },
+    {
+      "text": "Add Files to Staging",
+      "type": "shell",
+      "command": ["git", "add", "."],
+      "short_description": "Add files to staging",
+      "long_description": "Add all files in the folder to the staging area. The dot (.) means all files in the current directory."
+    },
+    {
+      "text": "Commit Staged Files",
+      "type": "shell",
+      "command": ["git", "commit", "-m", "<message>"],
+      "short_description": "Commit staged files",
+      "long_description": "Commit the staged files with a message. The message should describe what the commit includes."
+    },
+    {
+      "text": "Push to GitHub",
+      "type": "shell",
+      "command": ["git", "push", "-u", "origin", "main"],
+      "short_description": "Push to GitHub",
+      "long_description": "Push the local repository to GitHub. This pushes the `main` branch to the `origin` remote, which points to the GitHub repository. The `-u` flag sets `origin main` as the default upstream for future pushes."
+    }
+  ]
+}
