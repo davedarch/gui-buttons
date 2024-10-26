@@ -1,32 +1,11 @@
 {
   "buttons": [
     {
-      "text": "Initialize Git Repository",
-      "type": "shell",
-      "command": ["git", "init"],
-      "short_description": "Initialize Git repository",
-      "long_description": "Initialize a new Git repository locally if it isn't already initialized. This sets up the local Git structure in your folder."
-    },
-    {
       "text": "Create GitHub Repository",
       "type": "shell",
       "command": ["gh", "repo", "create", "`basename \"$PWD\"`", "--public", "--source=.", "--remote=origin"],
       "short_description": "Create GitHub repository",
       "long_description": "Use `gh` to create a new GitHub repository. This command creates a new repository with the folder's name, makes it public, uses the current directory as the source, and sets up a remote named 'origin'."
-    },
-    {
-      "text": "Add Files to Staging",
-      "type": "shell",
-      "command": ["git", "add", "."],
-      "short_description": "Add files to staging",
-      "long_description": "Add all files in the folder to the staging area. The dot (.) means all files in the current directory."
-    },
-    {
-      "text": "Push to GitHub",
-      "type": "shell",
-      "command": ["git", "push", "-u", "origin", "main"],
-      "short_description": "Push to GitHub",
-      "long_description": "Push the local repository to GitHub. This pushes the `main` branch to the `origin` remote, which points to the GitHub repository. The `-u` flag sets `origin main` as the default upstream for future pushes."
     },
     {
       "text": "Create .gitignore",
@@ -36,11 +15,46 @@
       "long_description": "Run the create_gitignore.py script to fetch and create a .gitignore file for a specified language in the current directory."
     },
     {
+      "text": "Initialize Git Repository",
+      "type": "shell",
+      "command": ["git", "init"],
+      "short_description": "Initialize Git repository",
+      "long_description": "Initialize a new Git repository locally if it isn't already initialized. This sets up the local Git structure in your folder."
+    },
+    {
+      "text": "Rename Branch to Main",
+      "type": "shell",
+      "command": ["git", "branch", "-M", "main"],
+      "short_description": "Rename branch to main",
+      "long_description": "Rename the current branch to 'main'. This is often done to set 'main' as the default branch name."
+    },
+    {
+      "text": "Add Files to Staging",
+      "type": "shell",
+      "command": ["git", "add", "."],
+      "short_description": "Add files to staging",
+      "long_description": "Add all files in the folder to the staging area. The dot (.) means all files in the current directory."
+    },
+    {
       "text": "Commit with Message",
       "type": "shell",
       "command": ["python", "get_commit_message.py"],
       "short_description": "Commit with message",
       "long_description": "Run the get_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
+    },
+    {
+      "text": "Push to GitHub",
+      "type": "shell",
+      "command": ["git", "push", "-u", "origin", "main"],
+      "short_description": "Push to GitHub",
+      "long_description": "Push the local repository to GitHub. This pushes the `main` branch to the `origin` remote, which points to the GitHub repository. The `-u` flag sets `origin main` as the default upstream for future pushes."
+    },
+    {
+      "text": "Add Project Title to README",
+      "type": "shell",
+      "command": ["echo", "\"# `basename \"$PWD\"`\"", ">>", "READMEtest.md"],
+      "short_description": "Add project title to README",
+      "long_description": "Echoes the current directory name as a title into the README.md file."
     }
   ]
 }
