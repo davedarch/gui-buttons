@@ -32,14 +32,6 @@ class Tooltip:
             self.text_widget.insert(tk.END, "Hover over a button to see its description here.", 'description')
             self.text_widget.config(state='disabled')
 
-def get_commit_message():
-    # Prompt the user for a commit message
-    root = tk.Tk()
-    root.withdraw()  # Hide the root window
-    commit_message = simpledialog.askstring("Commit Message", "Enter your commit message:")
-    root.destroy()
-    return commit_message
-
 def run_shell_command_in_frontmost_terminal(command):
     try:
         # Check if the command is a git commit and needs a message
@@ -120,39 +112,6 @@ def load_button_config(file_path):
         config = json.load(file)
     return config['buttons']
 
-def create_gitignore_file(language):
-    gitignore_content = {
-        "python": """
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-# ... other Python entries ...
-""",
-        "node": """
-# Logs
-logs
-*.log
-npm-debug.log*
-# ... other Node.js entries ...
-""",
-        "javascript": """
-# Logs
-logs
-*.log
-npm-debug.log*
-# ... other JavaScript entries ...
-"""
-    }
-
-    content = gitignore_content.get(language.lower(), "")
-    if content:
-        with open('.gitignore', 'w') as file:
-            file.write(content)
-        print(f".gitignore file created for {language}.")
-    else:
-        print(f"No .gitignore template found for {language}.")
-
 def load_buttons_from_file(scrollable_frame, description_text):
     # Set the initial directory to the current working directory
     initial_dir = os.getcwd()
@@ -183,15 +142,6 @@ def load_buttons_from_file(scrollable_frame, description_text):
                     button['long_description'],
                     run_applescript,
                     args=[button['command']],
-                    description_text=description_text
-                )
-            elif button['type'] == 'gitignore':
-                create_button(
-                    scrollable_frame,
-                    button['text'],
-                    button['long_description'],
-                    create_gitignore_file,
-                    args=[button['language']],
                     description_text=description_text
                 )
 

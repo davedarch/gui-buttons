@@ -22,18 +22,25 @@
       "long_description": "Add all files in the folder to the staging area. The dot (.) means all files in the current directory."
     },
     {
-      "text": "Commit Staged Files",
-      "type": "shell",
-      "command": ["git", "commit", "-m", "<message>"],
-      "short_description": "Commit staged files",
-      "long_description": "Commit the staged files with a message. The message should describe what the commit includes."
-    },
-    {
       "text": "Push to GitHub",
       "type": "shell",
       "command": ["git", "push", "-u", "origin", "main"],
       "short_description": "Push to GitHub",
       "long_description": "Push the local repository to GitHub. This pushes the `main` branch to the `origin` remote, which points to the GitHub repository. The `-u` flag sets `origin main` as the default upstream for future pushes."
+    },
+    {
+      "text": "Create .gitignore",
+      "type": "shell",
+      "command": ["python", "create_gitignore.py"],
+      "short_description": "Create .gitignore file",
+      "long_description": "Run the create_gitignore.py script to fetch and create a .gitignore file for a specified language in the current directory."
+    },
+    {
+      "text": "Commit with Message",
+      "type": "shell",
+      "command": ["python", "get_commit_message.py"],
+      "short_description": "Commit with message",
+      "long_description": "Run the get_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
     }
   ]
 }
