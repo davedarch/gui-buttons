@@ -52,16 +52,15 @@ This project provides a graphical user interface (GUI) for executing various she
 ## JSON Configuration
 
 Commands are defined in JSON files. Each command has the following structure:
-
-
-json
+  ```json
 {
-"text": "Button Text",
-"type": "shell or applescript",
-"command": ["command", "arguments"],
-"short_description": "Short description",
-"long_description": "Detailed description"
+  "text": "Button Text",
+  "type": "shell or applescript",
+  "command": ["command", "arguments"],
+  "short_description": "Short description",
+  "long_description": "Detailed description"
 }
+  ```
 
 ## Example JSON Files
 
