@@ -52,7 +52,7 @@
     {
       "text": "Add Project Title to README",
       "type": "shell",
-      "command": ["echo", "\"# `basename \"$PWD\"`\"", ">>", "READMEtest.md"],
+      "command": ["echo", "\"# `basename \"$PWD\"`\"", ">>", "README.md"],
       "short_description": "Add project title to README",
       "long_description": "Echoes the current directory name as a title into the README.md file."
     }
