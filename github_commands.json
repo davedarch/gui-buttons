@@ -57,11 +57,25 @@
       "long_description": "Echoes the current directory name as a title into the README.md file."
     },
     {
+      "text": "Add File and Commit",
+      "type": "shell",
+      "command": ["python", "git_add.py"],
+      "short_description": "Add file and commit",
+      "long_description": "Run the git_add.py script to add a specified file to the repository, commit the change with a message indicating the file was added, and push the changes to the main branch."
+    },
+    {
       "text": "Remove File and Commit",
       "type": "shell",
       "command": ["python", "git_rm.py"],
       "short_description": "Remove file and commit",
       "long_description": "Run the git_rm.py script to remove a specified file from the repository, commit the change with a message indicating the file was deleted, and push the changes to the main branch."
+    },
+    {
+      "text": "Pull from GitHub",
+      "type": "shell",
+      "command": ["git", "pull", "origin", "main"],
+      "short_description": "Pull from GitHub",
+      "long_description": "Pull the latest changes from the main branch of the origin remote repository. This updates your local repository with the latest changes from GitHub."
     }
   ]
 }

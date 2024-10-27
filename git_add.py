@@ -8,9 +8,21 @@ def add_file():
     completer = WordCompleter(files, ignore_case=True)
     file_name = prompt("Enter the file name to add: ", completer=completer)
     if file_name:
-        command = f'git add "{file_name}"'
-        print(f"Executing command: {command}")  # Print the command to be executed
-        os.system(command)
+        # Add the file
+        add_command = f'git add "{file_name}"'
+        print(f"Executing command: {add_command}")
+        os.system(add_command)
+        
+        # Commit the change
+        commit_message = f'Added {file_name}'
+        commit_command = f'git commit -m "{commit_message}"'
+        print(f"Executing command: {commit_command}")
+        os.system(commit_command)
+        
+        # Push the changes
+        push_command = 'git push origin main'
+        print(f"Executing command: {push_command}")
+        os.system(push_command)
 
 if __name__ == "__main__":
     add_file()
