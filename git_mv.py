@@ -1,18 +1,30 @@
 from prompt_toolkit import prompt
-from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.completion import Completer, Completion
 import os
+
+class PathCompleter(Completer):
+    def get_completions(self, document, complete_event):
+        text = document.text_before_cursor
+        dirname = os.path.dirname(text)
+        if not dirname:
+            dirname = '.'
+        basename = os.path.basename(text)
+        try:
+            for name in os.listdir(dirname):
+                if name.startswith(basename) and (os.path.isdir(os.path.join(dirname, name)) or os.path.isfile(os.path.join(dirname, name))):
+                    yield Completion(name, start_position=-len(basename))
+        except OSError:
+            pass
 
 def git_mv():
     cwd = os.getcwd()
-    # List both files and directories
-    items = [item for item in os.listdir(cwd) if os.path.isfile(item) or os.path.isdir(item)]
-    completer = WordCompleter(items, ignore_case=True)
+    completer = PathCompleter()
     
     # Prompt for the source file or directory name
     source_name = prompt("Enter the source file or directory name: ", completer=completer)
     if source_name:
         # Prompt for the destination file or directory name
-        destination_name = prompt("Enter the destination file or directory name: ")
+        destination_name = prompt("Enter the destination file or directory name: ", completer=completer)
         
         # Execute the git mv command
         mv_command = f'git mv "{source_name}" "{destination_name}"'
