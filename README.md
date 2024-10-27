@@ -23,7 +23,7 @@ This project provides a graphical user interface (GUI) for executing various she
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/gui-buttons.git
+   git clone https://github.com/davedarch/gui-buttons.git
    cd gui-buttons
    ```
 
