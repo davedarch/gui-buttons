@@ -160,6 +160,13 @@ def load_buttons_from_file(scrollable_frame, description_text, gui_settings):
         file_name = os.path.splitext(os.path.basename(file_path))[0]
         root.title(file_name.replace("_", " "))
 
+def run_applescript(script):
+    """Executes an AppleScript command."""
+    try:
+        subprocess.run(['osascript', '-e', script], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while running AppleScript: {e}")
+
 def main():
     global root
     root = tk.Tk()
