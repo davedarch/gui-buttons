@@ -3,7 +3,7 @@ from datetime import datetime
 
 def add_all_and_commit():
     # Add all files
-    add_command = 'git add .'
+    add_command = 'git add -A'
     print(f"Executing command: {add_command}")
     os.system(add_command)
     
