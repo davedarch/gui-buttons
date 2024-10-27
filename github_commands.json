@@ -76,6 +76,13 @@
       "command": ["git", "pull", "origin", "main"],
       "short_description": "Pull from GitHub",
       "long_description": "Pull the latest changes from the main branch of the origin remote repository. This updates your local repository with the latest changes from GitHub."
+    },
+    {
+      "text": "Add All and Commit with Date",
+      "type": "shell",
+      "command": ["python", "git_add_all.py"],
+      "short_description": "Add all files and commit with date",
+      "long_description": "Run the git_add_all.py script to add all files to the repository, commit the changes with a message that includes the current date and time, and push the changes to the main branch."
     }
   ]
 }
