@@ -49,10 +49,7 @@ def run_shell_command_in_frontmost_terminal(command):
         
         full_command = " ".join(command)
         
-        if '`basename "$PWD"`' in full_command:
-            folder_name = os.path.basename(os.getcwd())
-            full_command = full_command.replace('`basename "$PWD"`', folder_name)
-        
+        # Remove the replacement logic for `basename "$PWD"`
         full_command_escaped = full_command.replace('"', '\\"')
         
         applescript_command = f'''
