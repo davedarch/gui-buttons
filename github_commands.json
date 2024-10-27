@@ -83,6 +83,13 @@
       "command": ["python", "git_add_all.py"],
       "short_description": "Add all files and commit with date",
       "long_description": "Run the git_add_all.py script to add all files to the repository, commit the changes with a message that includes the current date and time, and push the changes to the main branch."
+    },
+    {
+      "text": "Rename File and Commit",
+      "type": "shell",
+      "command": ["python", "git_rename.py"],
+      "short_description": "Rename file and commit",
+      "long_description": "Run the git_rename.py script to rename a specified file in the repository, commit the change with a message indicating the file was renamed, and push the changes to the main branch."
     }
   ]
 }
