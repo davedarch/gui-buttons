@@ -55,6 +55,13 @@
       "command": ["echo", "\"# `basename \"$PWD\"`\"", ">>", "README.md"],
       "short_description": "Add project title to README",
       "long_description": "Echoes the current directory name as a title into the README.md file."
+    },
+    {
+      "text": "Remove File and Commit",
+      "type": "shell",
+      "command": ["python", "git_rm.py"],
+      "short_description": "Remove file and commit",
+      "long_description": "Run the git_rm.py script to remove a specified file from the repository, commit the change with a message indicating the file was deleted, and push the changes to the main branch."
     }
   ]
 }

@@ -20,6 +20,7 @@ class Tooltip:
         if self.text_widget:
             self.text_widget.config(state='normal')
             self.text_widget.delete('1.0', tk.END)
+            # Insert only the long description
             self.text_widget.insert(tk.END, self.long_description, 'description')
             self.text_widget.tag_configure('description', foreground="#5A9")
             self.text_widget.config(state='disabled')
@@ -32,29 +33,36 @@ class Tooltip:
             self.text_widget.config(state='disabled')
 
 def get_commit_message():
+    # Prompt the user for a commit message
     root = tk.Tk()
-    root.withdraw()
+    root.withdraw()  # Hide the root window
     commit_message = simpledialog.askstring("Commit Message", "Enter your commit message:")
     root.destroy()
     return commit_message
 
 def run_shell_command_in_frontmost_terminal(command):
     try:
+        # Check if the command is a git commit and needs a message
         if 'git commit -m <message>' in " ".join(command):
             commit_message = get_commit_message()
             if not commit_message:
                 messagebox.showwarning("Commit Cancelled", "No commit message provided. Commit cancelled.")
                 return
+            # Replace the placeholder with the actual commit message
             command = [part.replace('<message>', commit_message) for part in command]
         
+        # Join the command list into a single string with proper spacing
         full_command = " ".join(command)
         
+        # Check for the placeholder and replace it with the actual folder name
         if '`basename "$PWD"`' in full_command:
             folder_name = os.path.basename(os.getcwd())
             full_command = full_command.replace('`basename "$PWD"`', folder_name)
         
+        # Escape double quotes for AppleScript
         full_command_escaped = full_command.replace('"', '\\"')
         
+        # Construct the AppleScript command to execute normally
         applescript_command = f'''
         tell application "Terminal"
             activate
@@ -62,54 +70,48 @@ def run_shell_command_in_frontmost_terminal(command):
         end tell
         '''
         
+        # Execute the AppleScript command
         subprocess.run(['osascript', '-e', applescript_command], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Shell command failed: {e}")
 
-def create_button(parent, text, long_description, command, args=(), gui_settings=None, description_text=None):
-    if gui_settings is None:
-        gui_settings = {}
-
-    bg_color = gui_settings.get("button", {}).get("background_color", "#2C2C2E")
-    fg_color = gui_settings.get("button", {}).get("text_color", "white")
-    font_size = gui_settings.get("button", {}).get("font_size", 22)
-    font_family = gui_settings.get("button", {}).get("font_family", "Helvetica")
-    borderless = gui_settings.get("button", {}).get("borderless", True)
-    padding_x = gui_settings.get("button", {}).get("padding", {}).get("x", 10)
-    padding_y = gui_settings.get("button", {}).get("padding", {}).get("y", 5)
-
+def create_button(parent, text, long_description, command, args=(), bg_color="#2C2C2E", fg_color="white", font_size=22, description_text=None):
+    # Create a frame to hold the button and its command
     frame = tk.Frame(parent, bg=bg_color)
-    frame.pack(pady=2, fill='x', padx=padding_x)
+    frame.pack(pady=2, fill='x', padx=10)
 
+    # Create the button
     btn = tkm.Button(
         frame, 
         text=text, 
         command=partial(command, *args), 
         bg=bg_color, 
         fg=fg_color, 
-        font=(font_family, font_size),
-        borderless=borderless
+        font=('Helvetica', font_size),
+        borderless=1
     )
-    btn.pack(side='left', padx=padding_x, pady=padding_y)
+    btn.pack(side='left', padx=5, pady=5)
 
+    # Add tooltip to the button using the long description
     Tooltip(btn, long_description=long_description, text_widget=description_text)
 
+    # Create the command text widget
     command_text = " ".join(args[0]) if isinstance(args[0], list) else args[0]
     command_text_widget = tk.Text(
         frame,
         height=1,
-        bg=gui_settings.get("command_text", {}).get("background_color", "#2C2C2E"),
-        fg=gui_settings.get("command_text", {}).get("text_color", "#5A9"),
-        font=(gui_settings.get("command_text", {}).get("font_family", "Helvetica"),
-              gui_settings.get("command_text", {}).get("font_size", 22)),
+        bg=bg_color,
+        fg="#5A9",  # Set the command text color to a grey/blue
+        font=('Helvetica', font_size),
         wrap='none',
         borderwidth=0,
         highlightthickness=0
     )
     command_text_widget.insert(tk.END, command_text)
-    command_text_widget.config(state='disabled')
-    command_text_widget.pack(side='left', padx=padding_x)
+    command_text_widget.config(state='disabled')  # Make it read-only
+    command_text_widget.pack(side='left', padx=5)
 
+    # Enable selection and copying
     command_text_widget.bind("<Button-1>", lambda event: command_text_widget.config(state='normal'))
     command_text_widget.bind("<FocusOut>", lambda event: command_text_widget.config(state='disabled'))
 
@@ -118,23 +120,19 @@ def load_button_config(file_path):
         config = json.load(file)
     return config['buttons']
 
-def load_gui_settings(file_path):
-    with open(file_path, 'r') as file:
-        settings = json.load(file)
-    return settings
-
-def load_buttons_from_file(scrollable_frame, description_text, gui_settings):
+def load_buttons_from_file(scrollable_frame, description_text):
+    # Set the initial directory to the current working directory
     initial_dir = os.getcwd()
     
     file_path = filedialog.askopenfilename(
-        initialdir=initial_dir,
+        initialdir=initial_dir,  # Start in the current working directory
         filetypes=[("JSON files", "*.json")]
     )
     
     if file_path:
         button_config = load_button_config(file_path)
         for widget in scrollable_frame.winfo_children():
-            widget.destroy()
+            widget.destroy()  # Clear existing buttons
         for button in button_config:
             if button['type'] == 'shell':
                 create_button(
@@ -143,7 +141,6 @@ def load_buttons_from_file(scrollable_frame, description_text, gui_settings):
                     button['long_description'],
                     run_shell_command_in_frontmost_terminal,
                     args=[button['command']],
-                    gui_settings=gui_settings,
                     description_text=description_text
                 )
             elif button['type'] == 'applescript':
@@ -153,58 +150,49 @@ def load_buttons_from_file(scrollable_frame, description_text, gui_settings):
                     button['long_description'],
                     run_applescript,
                     args=[button['command']],
-                    gui_settings=gui_settings,
                     description_text=description_text
                 )
         
+        # Update the window title with the loaded file name (minus the underscore)
         file_name = os.path.splitext(os.path.basename(file_path))[0]
         root.title(file_name.replace("_", " "))
 
 def main():
-    global root
+    global root  # Declare root as a global variable
     root = tk.Tk()
+    root.title("Scrollable Command GUI")
+    root.geometry("400x600")
+    root.configure(bg="#1E1E1E")
 
-    gui_settings = load_gui_settings("gui_settings.json")
-
-    root.title(gui_settings.get("window", {}).get("title", "Scrollable Command GUI"))
-    root.geometry(f"{gui_settings.get('window', {}).get('width', 400)}x{gui_settings.get('window', {}).get('height', 600)}")
-    root.configure(bg=gui_settings.get("window", {}).get("background_color", "#1E1E1E"))
-
-    scrollable_frame = SFrame(
-        root,
-        bg=gui_settings.get("scrollable_frame", {}).get("background_color", "#1E1E1E"),
-        mousewheel=gui_settings.get("scrollable_frame", {}).get("mousewheel", True)
-    )
+    # Create the scrollable frame
+    scrollable_frame = SFrame(root, bg="#1E1E1E", mousewheel=True)
     scrollable_frame.pack(expand=1, fill='both')
 
+    # Text widget to display descriptions and commands
     description_text = tk.Text(
         root,
-        height=gui_settings.get("text_box", {}).get("height", 2),
-        bg=gui_settings.get("text_box", {}).get("background_color", "#1E1E1E"),
-        fg=gui_settings.get("text_box", {}).get("text_color", "#5A9"),
-        font=(gui_settings.get("text_box", {}).get("font_family", "Helvetica"),
-              gui_settings.get("text_box", {}).get("font_size", 22)),
-        wrap=gui_settings.get("text_box", {}).get("wrap", "word"),
+        height=2,
+        bg="#1E1E1E",
+        fg="#5A9",
+        font=('Helvetica', 22),
+        wrap='word',
         state='disabled'
     )
-    description_text.pack(pady=gui_settings.get("text_box", {}).get("padding", {}).get("y", 5),
-                          fill='x',
-                          padx=gui_settings.get("text_box", {}).get("padding", {}).get("x", 10))
+    description_text.pack(pady=5, fill='x', padx=10)
 
+    # Add a Load button to load configurations
     load_button = Button(
         root,
         text="Load Config",
-        command=lambda: load_buttons_from_file(scrollable_frame, description_text, gui_settings),
-        bg=gui_settings.get("button", {}).get("background_color", "#2C2C2E"),
-        fg=gui_settings.get("button", {}).get("text_color", "white"),
-        font=(gui_settings.get("button", {}).get("font_family", "Helvetica"),
-              gui_settings.get("button", {}).get("font_size", 22)),
-        borderless=gui_settings.get("button", {}).get("borderless", True)
+        command=lambda: load_buttons_from_file(scrollable_frame, description_text),
+        bg="#2C2C2E",
+        fg="white",
+        font=('Helvetica', 22),
+        borderless=1
     )
-    load_button.pack(pady=gui_settings.get("button", {}).get("padding", {}).get("y", 5),
-                     fill='x',
-                     padx=gui_settings.get("button", {}).get("padding", {}).get("x", 10))
+    load_button.pack(pady=5, fill='x', padx=10)
 
+    # Configure the SFrame to avoid mousewheel interference with text and buttons
     scrollable_frame.config(avoidmousewheel=(description_text,))
 
     root.mainloop()

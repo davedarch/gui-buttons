@@ -1,0 +1,43 @@
+{
+  "window": {
+    "title": "Terminal Commands GUI",
+    "width": 400,
+    "height": 600,
+    "background_color": "#1E1E1E"
+  },
+  "button": {
+    "background_color": "#2C2C2E",
+    "text_color": "white",
+    "font_size": 22,
+    "font_family": "Helvetica",
+    "borderless": true,
+    "padding": {
+      "x": 20,
+      "y": 5
+    }
+  },
+  "text_box": {
+    "background_color": "#1E1E1E",
+    "text_color": "#5A9",
+    "font_size": 22,
+    "font_family": "Helvetica",
+    "height": 2,
+    "wrap": "word",
+    "padding": {
+      "x": 10,
+      "y": 5
+    }
+  },
+  "command_text": {
+    "background_color": "#2C2C2E",
+    "text_color": "#5A9",
+    "font_size": 22,
+    "font_family": "Helvetica"
+  },
+  "scrollable_frame": {
+    "background_color": "#1E1E1E",
+    "mousewheel": true,
+    "avoid_mousewheel": ["description_text"]
+  }
+}
+
