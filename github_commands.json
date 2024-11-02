@@ -10,7 +10,7 @@
     {
       "text": "Create .gitignore",
       "type": "shell",
-      "command": ["python", "create_gitignore.py"],
+      "command": ["python", "scripts/create_gitignore.py"],
       "short_description": "Create .gitignore file",
       "long_description": "Run the create_gitignore.py script to fetch and create a .gitignore file for a specified language in the current directory."
     },
@@ -38,9 +38,9 @@
     {
       "text": "Commit with Message",
       "type": "shell",
-      "command": ["python", "get_commit_message.py"],
+      "command": ["python", "scripts/git_commit_message.py"],
       "short_description": "Commit with message",
-      "long_description": "Run the get_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
+      "long_description": "Run the git_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
     },
     {
       "text": "Push to GitHub",
@@ -59,14 +59,14 @@
     {
       "text": "Add File and Commit",
       "type": "shell",
-      "command": ["python", "git_add.py"],
+      "command": ["python", "scripts/git_add.py"],
       "short_description": "Add file and commit",
       "long_description": "Run the git_add.py script to add a specified file to the repository, commit the change with a message indicating the file was added, and push the changes to the main branch."
     },
     {
       "text": "Remove File and Commit",
       "type": "shell",
-      "command": ["python", "git_rm.py"],
+      "command": ["python", "scripts/git_rm.py"],
       "short_description": "Remove file and commit",
       "long_description": "Run the git_rm.py script to remove a specified file from the repository, commit the change with a message indicating the file was deleted, and push the changes to the main branch."
     },
@@ -80,14 +80,14 @@
     {
       "text": "Add All and Commit with Date",
       "type": "shell",
-      "command": ["python", "git_add_all.py"],
+      "command": ["python", "scripts/git_add_all.py"],
       "short_description": "Add all files and commit with date",
       "long_description": "Run the git_add_all.py script to add all files to the repository, commit the changes with a message that includes the current date and time, and push the changes to the main branch."
     },
     {
       "text": "Rename File and Commit",
       "type": "shell",
-      "command": ["python", "git_rename.py"],
+      "command": ["python", "scripts/git_rename.py"],
       "short_description": "Rename file and commit",
       "long_description": "Run the git_rename.py script to rename a specified file in the repository, commit the change with a message indicating the file was renamed, and push the changes to the main branch."
     }
