@@ -1,6 +1,13 @@
 {
   "buttons": [
     {
+      "text": "Activate venv from python/gui-buttons",
+      "type": "shell",
+      "command": ["source", "'/Users/macstudio/Library/Mobile Documents/com~apple~CloudDocs/iC_Code/python/gui-buttons/venv/bin/activate'"],
+      "short_description": "Activate venv from python/gui-buttons",
+      "long_description": "Activate the virtual environment located in the gui-buttons directory. Allows .py scripts to be run from anywhere."
+    },
+    {
       "text": "Create venv",
       "type": "shell",
       "command": ["python3.11", "-m", "venv", "venv"],

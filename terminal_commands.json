@@ -160,6 +160,13 @@
       "command": ["open", "."],
       "short_description": "Open current directory in Finder",
       "long_description": "Opens the current directory in the Finder application."
+    },
+    {
+      "text": "Create Symlink",
+      "type": "shell",
+      "command": ["ln", "-s"],
+      "short_description": "Create a symbolic link",
+      "long_description": "ln -s /path/to/original /path/to/link. Creates a symbolic link from the original file or directory to the new link location. Drag and drop files/folders from Finder to the terminal."
     }
   ]
 }
