@@ -111,12 +111,12 @@ def create_button(parent, text, long_description, command, args=(), gui_settings
     command_text_widget.bind("<FocusOut>", lambda event: command_text_widget.config(state='disabled'))
 
 def load_button_config(file_path):
-    with open(file_path, 'r') as file:
+    with open(os.path.join("config", file_path), 'r') as file:
         config = json.load(file)
     return config['buttons']
 
 def load_gui_settings(file_path):
-    with open(file_path, 'r') as file:
+    with open(os.path.join("gui", file_path), 'r') as file:
         settings = json.load(file)
     return settings
 

@@ -1,0 +1,173 @@
+{
+  "buttons": [
+    {
+      "text": "Save CLI History",
+      "type": "shell",
+      "command": ["history", "1000", "|", "grep"],
+      "short_description": "Save CLI history",
+      "long_description": "Writes the current session's command history to the history file, ensuring all commands are saved."
+    },
+    {
+      "text": "Search CLI History",
+      "type": "shell",
+      "command": ["history", "|", "grep"],
+      "short_description": "Search CLI history",
+      "long_description": "Searches through the command history for a specific term."
+    },
+    {
+      "text": "Grep for a Pattern",
+      "type": "shell",
+      "command": ["grep", "-r", ".", ""],
+      "short_description": "Grep for a pattern",
+      "long_description": "Recursively search for a pattern in the current directory."
+    },
+    {
+      "text": "Show Disk Usage",
+      "type": "shell",
+      "command": ["du", "-sh", "*"],
+      "short_description": "Show disk usage",
+      "long_description": "Displays the disk usage of each file and directory in the current directory in a human-readable format."
+    },
+    {
+      "text": "Check Free Disk Space",
+      "type": "shell",
+      "command": ["df"],
+      "short_description": "Check free disk space",
+      "long_description": "Shows the available disk space on all mounted filesystems."
+    },
+    {
+      "text": "Show Running Processes",
+      "type": "shell",
+      "command": ["top"],
+      "short_description": "Show running processes",
+      "long_description": "Displays a dynamic view of the system's running processes."
+    },
+    {
+      "text": "Kill a Process",
+      "type": "shell",
+      "command": ["kill"],
+      "short_description": "Kill a process",
+      "long_description": "Terminates a process by its PID."
+    },
+    {
+      "text": "Copy Files",
+      "type": "shell",
+      "command": ["cp"],
+      "short_description": "Copy files",
+      "long_description": "Copies files or directories from one location to another."
+    },
+    {
+      "text": "Move Files",
+      "type": "shell",
+      "command": ["mv"],
+      "short_description": "Move files",
+      "long_description": "Moves files or directories from one location to another."
+    },
+    {
+      "text": "Remove Files",
+      "type": "shell",
+      "command": ["rm"],
+      "short_description": "Remove files",
+      "long_description": "Removes files from the filesystem."
+    },
+    {
+      "text": "Remove Directories",
+      "type": "shell",
+      "command": ["rm", "-rf"],
+      "short_description": "Remove directories",
+      "long_description": "Recursively removes directories and their contents."
+    },
+    {
+      "text": "View File Contents",
+      "type": "shell",
+      "command": ["cat"],
+      "short_description": "View file contents",
+      "long_description": "Displays the contents of a file."
+    },
+    {
+      "text": "Edit File with Nano",
+      "type": "shell",
+      "command": ["nano"],
+      "short_description": "Edit file with Nano",
+      "long_description": "Opens a file in the Nano text editor."
+    },
+    {
+      "text": "Change File Permissions",
+      "type": "shell",
+      "command": ["chmod", "755"],
+      "short_description": "Change file permissions",
+      "long_description": "Changes the permissions of a file or directory."
+    },
+    {
+      "text": "Download Files",
+      "type": "shell",
+      "command": ["curl", "-O"],
+      "short_description": "Download files",
+      "long_description": "Downloads files from the internet."
+    },
+    {
+      "text": "Check Network Configuration",
+      "type": "shell",
+      "command": ["ifconfig"],
+      "short_description": "Check network configuration",
+      "long_description": "Displays network configuration details."
+    },
+    {
+      "text": "Ping a Host",
+      "type": "shell",
+      "command": ["ping"],
+      "short_description": "Ping a host",
+      "long_description": "Sends ICMP ECHO_REQUEST packets to network hosts."
+    },
+    {
+      "text": "Traceroute to a Host",
+      "type": "shell",
+      "command": ["traceroute"],
+      "short_description": "Traceroute to a host",
+      "long_description": "Prints the route packets take to a network host."
+    },
+    {
+      "text": "Open Zsh History",
+      "type": "shell",
+      "command": ["open", "~/.zsh_history"],
+      "short_description": "Open Zsh history",
+      "long_description": "Opens the Zsh history file in the default text editor."
+    },
+    {
+      "text": "View Zsh Configuration",
+      "type": "shell",
+      "command": ["cat", "~/.zshrc"],
+      "short_description": "View Zsh configuration",
+      "long_description": "Displays the contents of the Zsh configuration file."
+    },
+    {
+      "text": "Edit Zsh Configuration",
+      "type": "shell",
+      "command": ["nano", "~/.zshrc"],
+      "short_description": "Edit Zsh configuration",
+      "long_description": "Opens the Zsh configuration file in the Nano text editor."
+    },
+    {
+      "text": "Reload Zsh Configuration",
+      "type": "shell",
+      "command": ["source", "~/.zshrc"],
+      "short_description": "Reload Zsh configuration",
+      "long_description": "Reloads the Zsh configuration file."
+    },
+    {
+      "text": "Open Current Directory in Finder",
+      "type": "shell",
+      "command": ["open", "."],
+      "short_description": "Open current directory in Finder",
+      "long_description": "Opens the current directory in the Finder application."
+    },
+    {
+      "text": "Create Symlink",
+      "type": "shell",
+      "command": ["ln", "-s"],
+      "short_description": "Create a symbolic link",
+      "long_description": "ln -s /path/to/original /path/to/link. Creates a symbolic link from the original file or directory to the new link location. Drag and drop files/folders from Finder to the terminal."
+    }
+  ]
+}
+

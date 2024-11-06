@@ -1,0 +1,120 @@
+{
+  "buttons": [
+    {
+      "text": "Create GitHub Repository",
+      "type": "shell",
+      "command": ["gh", "repo", "create", "`basename \"$PWD\"`", "--public", "--source=.", "--remote=origin"],
+      "short_description": "Create GitHub repository",
+      "long_description": "Use `gh` to create a new GitHub repository. This command creates a new repository with the folder's name, makes it public, uses the current directory as the source, and sets up a remote named 'origin'."
+    },
+    {
+      "text": "Create .gitignore",
+      "type": "shell",
+      "command": ["python", "scripts/create_gitignore.py"],
+      "short_description": "Create .gitignore file",
+      "long_description": "Run the create_gitignore.py script to fetch and create a .gitignore file for a specified language in the current directory."
+    },
+    {
+      "text": "Initialize Git Repository",
+      "type": "shell",
+      "command": ["git", "init"],
+      "short_description": "Initialize Git repository",
+      "long_description": "Initialize a new Git repository locally if it isn't already initialized. This sets up the local Git structure in your folder."
+    },
+    {
+      "text": "Rename Branch to Main",
+      "type": "shell",
+      "command": ["git", "branch", "-M", "main"],
+      "short_description": "Rename branch to main",
+      "long_description": "Rename the current branch to 'main'. This is often done to set 'main' as the default branch name."
+    },
+    {
+      "text": "Add Files to Staging",
+      "type": "shell",
+      "command": ["git", "add", "."],
+      "short_description": "Add files to staging",
+      "long_description": "Add all files in the folder to the staging area. The dot (.) means all files in the current directory."
+    },
+    {
+      "text": "Commit with Message",
+      "type": "shell",
+      "command": ["python", "scripts/git_commit_message.py"],
+      "short_description": "Commit with message",
+      "long_description": "Run the git_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
+    },
+    {
+      "text": "Push to GitHub",
+      "type": "shell",
+      "command": ["git", "push", "-u", "origin", "main"],
+      "short_description": "Push to GitHub",
+      "long_description": "Push the local repository to GitHub. This pushes the `main` branch to the `origin` remote, which points to the GitHub repository. The `-u` flag sets `origin main` as the default upstream for future pushes."
+    },
+    {
+      "text": "Add Project Title to README",
+      "type": "shell",
+      "command": ["echo", "\"# `basename \"$PWD\"`\"", ">>", "README.md"],
+      "short_description": "Add project title to README",
+      "long_description": "Echoes the current directory name as a title into the README.md file."
+    },
+    {
+      "text": "Add File and Commit",
+      "type": "shell",
+      "command": ["python", "scripts/git_add.py"],
+      "short_description": "Add file and commit",
+      "long_description": "Run the git_add.py script to add a specified file to the repository, commit the change with a message indicating the file was added, and push the changes to the main branch."
+    },
+    {
+      "text": "Remove File and Commit",
+      "type": "shell",
+      "command": ["python", "scripts/git_rm.py"],
+      "short_description": "Remove file and commit",
+      "long_description": "Run the git_rm.py script to remove a specified file from the repository, commit the change with a message indicating the file was deleted, and push the changes to the main branch."
+    },
+    {
+      "text": "Pull from GitHub",
+      "type": "shell",
+      "command": ["git", "pull", "origin", "main"],
+      "short_description": "Pull from GitHub",
+      "long_description": "Pull the latest changes from the main branch of the origin remote repository. This updates your local repository with the latest changes from GitHub."
+    },
+    {
+      "text": "Add All and Commit with Date",
+      "type": "shell",
+      "command": ["python", "scripts/git_add_all.py"],
+      "short_description": "Add all files and commit with date",
+      "long_description": "Run the git_add_all.py script to add all files to the repository, commit the changes with a message that includes the current date and time, and push the changes to the main branch."
+    },
+    {
+      "text": "Rename File and Commit",
+      "type": "shell",
+      "command": ["python", "scripts/git_rename.py"],
+      "short_description": "Rename file and commit",
+      "long_description": "Run the git_rename.py script to rename a specified file in the repository, commit the change with a message indicating the file was renamed, and push the changes to the main branch."
+    },
+    {
+      "text": "Create Scripts Folder",
+      "type": "shell",
+      "command": ["mkdir", "-p", "scripts"],
+      "short_description": "Create scripts folder",
+      "long_description": "Create a 'scripts' folder in the current working directory if it does not already exist."
+    },
+    {
+      "text": "Copy fetch_python_scripts.py",
+      "type": "shell",
+      "command": [
+        "cp",
+        "'/Users/macstudio/Library/Mobile Documents/com~apple~CloudDocs/iC_Code/python/gui-buttons/scripts/fetch_python_scripts.py'",
+        "./"
+      ],
+      "short_description": "Copy fetch_python_scripts.py to scripts folder",
+      "long_description": "Copy the fetch_python_scripts.py file from the iCloud directory to the 'scripts' folder in the current working directory."
+    },
+    {
+      "text": "Rename File or Directory",
+      "type": "shell",
+      "command": ["python", "scripts/git_mv.py"],
+      "short_description": "Rename file or directory",
+      "long_description": "Run the git_mv.py script to rename a specified file or directory in the repository, commit the change with a message indicating the move, and push the changes to the main branch."
+    }
+  ]
+}

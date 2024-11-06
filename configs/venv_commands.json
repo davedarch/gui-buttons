@@ -1,0 +1,67 @@
+{
+  "buttons": [
+    {
+      "text": "Activate venv from python/gui-buttons",
+      "type": "shell",
+      "command": ["source", "'/Users/macstudio/Library/Mobile Documents/com~apple~CloudDocs/iC_Code/python/gui-buttons/venv/bin/activate'"],
+      "short_description": "Activate venv from python/gui-buttons",
+      "long_description": "Activate the virtual environment located in the gui-buttons directory. Allows .py scripts to be run from anywhere."
+    },
+    {
+      "text": "Create venv",
+      "type": "shell",
+      "command": ["python3.11", "-m", "venv", "venv"],
+      "short_description": "Create virtual environment",
+      "long_description": "Create a new virtual environment in a directory called 'venv' within the current folder. This will create a folder containing the Python interpreter and standard libraries."
+    },
+    {
+      "text": "Activate venv (Linux/macOS)",
+      "type": "shell",
+      "command": ["source", "venv/bin/activate"],
+      "short_description": "Activate venv (Linux/macOS)",
+      "long_description": "This command sets up the environment variables so that the Python interpreter and packages are isolated to 'myenv'. You can run python files from anywhere and make use of the currently activated venv."
+    },
+    {
+      "text": "Activate venv (Windows)",
+      "type": "shell",
+      "command": ["venv\\Scripts\\activate"],
+      "short_description": "Activate venv (Windows)",
+      "long_description": "Similar to the above, but for Windows systems."
+    },
+    {
+      "text": "Deactivate venv",
+      "type": "shell",
+      "command": ["deactivate"],
+      "short_description": "Deactivate virtual environment",
+      "long_description": "This will return you to the global Python environment or the previous one you were using."
+    },
+    {
+      "text": "Upgrade pip",
+      "type": "shell",
+      "command": ["pip", "install", "--upgrade", "pip"],
+      "short_description": "Upgrade pip",
+      "long_description": "It's a good practice to keep pip up-to-date inside your environment."
+    },
+    {
+      "text": "Install from requirements",
+      "type": "shell",
+      "command": ["pip", "install", "-r", "requirements.txt"],
+      "short_description": "Install from requirements",
+      "long_description": "Recreate the environment with the same packages and versions as listed in 'requirements.txt'."
+    },
+    {
+      "text": "Remove venv (Linux/macOS)",
+      "type": "shell",
+      "command": ["rm", "-rf", "venv"],
+      "short_description": "Remove venv (Linux/macOS)",
+      "long_description": "This completely removes the environment folder and all its contents."
+    },
+    {
+      "text": "Remove venv (Windows)",
+      "type": "shell",
+      "command": ["rmdir", "/s", "/q", "venv"],
+      "short_description": "Remove venv (Windows)",
+      "long_description": "This completely removes the environment folder and all its contents. Use with caution."
+    }
+  ]
+}

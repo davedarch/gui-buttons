@@ -1,0 +1,25 @@
+{
+  "buttons": [
+    {
+      "text": "Show Disk Usage",
+      "type": "shell",
+      "command": ["df", "-h"],
+      "short_description": "Display disk usage",
+      "long_description": "Shows the disk space usage for all mounted filesystems in a human-readable format."
+    },
+    {
+      "text": "Show Memory Usage",
+      "type": "shell",
+      "command": ["vm_stat"],
+      "short_description": "Display memory usage",
+      "long_description": "Displays the current memory usage statistics on macOS."
+    },
+    {
+      "text": "List Running Processes",
+      "type": "shell",
+      "command": ["ps", "aux"],
+      "short_description": "List processes",
+      "long_description": "Lists all currently running processes with detailed information such as user, CPU usage, memory usage, and command."
+    }
+  ]
+}
