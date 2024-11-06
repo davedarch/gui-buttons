@@ -135,7 +135,7 @@ def load_buttons_from_file(scrollable_frame, description_text, gui_settings):
         for button in button_config:
             if button['type'] == 'shell':
                 if button['command'][0] == "python":
-                    button['command'][1] = os.path.join(os.path.basename(button['command'][1]))
+                    button['command'][1] = os.path.join("scripts", os.path.basename(button['command'][1]))
                 create_button(
                     scrollable_frame,
                     button['text'],
