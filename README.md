@@ -52,7 +52,6 @@
 2. **Load Configuration:**
    - Click on the "Load Config" button to select a JSON file containing your command configurations.
    - Example JSON files are available in the `configs/` directory, including:
-     - `ollama_commands.json`: Commands related to the Ollama framework.
      - `github_commands.json`: Git and GitHub operations.
      - `basic_commands.json`: Basic shell commands like listing directories and showing the date.
      - `mixed_commands.json`: A combination of shell and AppleScript commands.
@@ -87,7 +86,6 @@ Commands are defined in JSON files located in the `configs/` directory. Each com
 
 ### Example JSON Files
 
-- **`ollama_commands.json`**: Commands to manage Ollama models.
 - **`github_commands.json`**: Commands for creating repositories, managing branches, and other Git operations.
 - **`basic_commands.json`**: Simple commands like listing directories (`ls -la`), showing the current date (`date`), and time.
 - **`mixed_commands.json`**: A mix of shell and AppleScript commands for both terminal and macOS application control.
@@ -98,7 +96,6 @@ Commands are defined in JSON files located in the `configs/` directory. Each com
 ## Code Structure
 gui-buttons/
 ├── configs/
-│ ├── ollama_commands.json
 │ ├── github_commands.json
 │ ├── basic_commands.json
 │ ├── mixed_commands.json
