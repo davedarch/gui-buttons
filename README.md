@@ -110,7 +110,8 @@ Commands are defined in JSON files located in the `configs/` directory. Each com
 │ └── git_rm.py
 ├── .gitignore
 ├── requirements.txt
-└── README.md```
+└── README.md
+```
 
 
 ### Detailed Description
