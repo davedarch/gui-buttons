@@ -51,13 +51,7 @@
 
 2. **Load Configuration:**
    - Click on the "Load Config" button to select a JSON file containing your command configurations.
-   - Example JSON files are available in the `configs/` directory, including:
-     - `github_commands.json`: Git and GitHub operations.
-     - `basic_commands.json`: Basic shell commands like listing directories and showing the date.
-     - `mixed_commands.json`: A combination of shell and AppleScript commands.
-     - `terminal_commands.json`: Advanced terminal commands for process management and networking.
-     - `venv_commands.json`: Virtual environment management commands.
-     - `system_info_commands.json`: System information and monitoring commands.
+   - Example JSON files are available in the `configs/` directory.
 
 3. **Execute Commands:**
    - After loading a configuration, buttons corresponding to each command will appear.
@@ -94,7 +88,7 @@ Commands are defined in JSON files located in the `configs/` directory. Each com
 - **`system_info_commands.json`**: Commands to display system information like disk usage, memory usage, and running processes.
 
 ## Code Structure
-gui-buttons/
+```gui-buttons/
 ├── configs/
 │ ├── github_commands.json
 │ ├── basic_commands.json
@@ -116,7 +110,7 @@ gui-buttons/
 │ └── git_rm.py
 ├── .gitignore
 ├── requirements.txt
-└── README.md
+└── README.md```
 
 
 ### Detailed Description
