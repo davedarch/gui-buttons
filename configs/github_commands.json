@@ -8,13 +8,6 @@
       "long_description": "Use `gh` to create a new GitHub repository. This command creates a new repository with the folder's name, makes it public, uses the current directory as the source, and sets up a remote named 'origin'."
     },
     {
-      "text": "Create .gitignore",
-      "type": "shell",
-      "command": ["python", "scripts/create_gitignore.py"],
-      "short_description": "Create .gitignore file",
-      "long_description": "Run the create_gitignore.py script to fetch and create a .gitignore file for a specified language in the current directory."
-    },
-    {
       "text": "Initialize Git Repository",
       "type": "shell",
       "command": ["git", "init"],
@@ -36,13 +29,6 @@
       "long_description": "Add all files in the folder to the staging area. The dot (.) means all files in the current directory."
     },
     {
-      "text": "Commit with Message",
-      "type": "shell",
-      "command": ["python", "scripts/git_commit_message.py"],
-      "short_description": "Commit with message",
-      "long_description": "Run the git_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
-    },
-    {
       "text": "Push to GitHub",
       "type": "shell",
       "command": ["git", "push", "-u", "origin", "main"],
@@ -50,11 +36,39 @@
       "long_description": "Push the local repository to GitHub. This pushes the `main` branch to the `origin` remote, which points to the GitHub repository. The `-u` flag sets `origin main` as the default upstream for future pushes."
     },
     {
-      "text": "Add Project Title to README",
+      "text": "Pull from GitHub",
       "type": "shell",
-      "command": ["echo", "\"# `basename \"$PWD\"`\"", ">>", "README.md"],
-      "short_description": "Add project title to README",
-      "long_description": "Echoes the current directory name as a title into the README.md file."
+      "command": ["git", "pull", "origin", "main"],
+      "short_description": "Pull from GitHub",
+      "long_description": "Pull the latest changes from the main branch of the origin remote repository. This updates your local repository with the latest changes from GitHub."
+    },
+    {
+      "text": "Force Push to GitHub",
+      "type": "shell",
+      "command": ["git", "push", "origin", "main", "--force"],
+      "short_description": "Force push to GitHub",
+      "long_description": "Force push the local `main` branch to the `origin` remote. This overwrites the remote branch with your local branch, which can be useful for undoing changes or resolving conflicts."
+    },
+    {
+      "text": "Add Remote Origin",
+      "type": "shell",
+      "command": ["git", "remote", "add", "origin"],
+      "short_description": "Add remote origin",
+      "long_description": "Add a remote named 'origin' to your local Git repository. Append your repository URL to the end of this command to link your local repository to a remote GitHub repository."
+    },
+    {
+      "text": "Create .gitignore",
+      "type": "shell",
+      "command": ["python", "scripts/create_gitignore.py"],
+      "short_description": "Create .gitignore file",
+      "long_description": "Run the create_gitignore.py script to fetch and create a .gitignore file for a specified language in the current directory."
+    },
+    {
+      "text": "Commit with Message",
+      "type": "shell",
+      "command": ["python", "scripts/git_commit_message.py"],
+      "short_description": "Commit with message",
+      "long_description": "Run the git_commit_message.py script to prompt for a commit message and execute the git commit command in the current directory."
     },
     {
       "text": "Add File and Commit",
@@ -71,13 +85,6 @@
       "long_description": "Run the git_rm.py script to remove a specified file from the repository, commit the change with a message indicating the file was deleted, and push the changes to the main branch."
     },
     {
-      "text": "Pull from GitHub",
-      "type": "shell",
-      "command": ["git", "pull", "origin", "main"],
-      "short_description": "Pull from GitHub",
-      "long_description": "Pull the latest changes from the main branch of the origin remote repository. This updates your local repository with the latest changes from GitHub."
-    },
-    {
       "text": "Add All and Commit with Date",
       "type": "shell",
       "command": ["python", "scripts/git_add_all.py"],
@@ -90,6 +97,13 @@
       "command": ["python", "scripts/git_rename.py"],
       "short_description": "Rename file and commit",
       "long_description": "Run the git_rename.py script to rename a specified file in the repository, commit the change with a message indicating the file was renamed, and push the changes to the main branch."
+    },
+    {
+      "text": "Rename File or Directory",
+      "type": "shell",
+      "command": ["python", "scripts/git_mv.py"],
+      "short_description": "Rename file or directory",
+      "long_description": "Run the git_mv.py script to rename a specified file or directory in the repository, commit the change with a message indicating the move, and push the changes to the main branch."
     },
     {
       "text": "Create Scripts Folder",
@@ -110,11 +124,18 @@
       "long_description": "Copy the fetch_python_scripts.py file from the iCloud directory to the 'scripts' folder in the current working directory."
     },
     {
-      "text": "Rename File or Directory",
+      "text": "Create New Branch",
       "type": "shell",
-      "command": ["python", "scripts/git_mv.py"],
-      "short_description": "Rename file or directory",
-      "long_description": "Run the git_mv.py script to rename a specified file or directory in the repository, commit the change with a message indicating the move, and push the changes to the main branch."
+      "command": ["git", "checkout", "-b", "-"],
+      "short_description": "Create new branch",
+      "long_description": "Create a new branch with the specified name. Replace <branch-name> with the desired name of the new branch."
+    },
+    {
+      "text": "Push Branch to GitHub",
+      "type": "shell",
+      "command": ["git", "push", "origin", "-"],
+      "short_description": "Push branch to GitHub",
+      "long_description": "Push the specified branch to the origin remote on GitHub. Replace <branch-name> with the name of the branch you want to push."
     }
   ]
 }

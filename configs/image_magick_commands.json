@@ -1,0 +1,74 @@
+{
+  "buttons": [
+    {
+      "text": "Resize Image",
+      "type": "shell",
+      "command": ["magick", "convert", "input.jpg", "-resize", "800x600", "output.jpg"],
+      "short_description": "Resize image to 800x600 pixels",
+      "long_description": "Resize the selected image to 800x600 pixels, suitable for standard web displays."
+    },
+    {
+      "text": "Convert to WebP",
+      "type": "shell",
+      "command": ["magick", "convert", "input.png", "output.webp"],
+      "short_description": "Convert image to WebP format",
+      "long_description": "Convert the selected image to WebP format for better web performance and reduced file size."
+    },
+    {
+      "text": "Optimize Image",
+      "type": "shell",
+      "command": ["magick", "convert", "input.jpg", "-strip", "-quality", "85", "output.jpg"],
+      "short_description": "Optimize image for web",
+      "long_description": "Optimize the image by stripping metadata and setting quality to 85 to balance size and clarity for web use."
+    },
+    {
+      "text": "Crop Image",
+      "type": "shell",
+      "command": ["magick", "convert", "input.jpg", "-crop", "800x600+100+100", "output.jpg"],
+      "short_description": "Crop image to 800x600 at position (100,100)",
+      "long_description": "Crop the image to 800x600 pixels starting from the position (100,100), focusing on a specific area for web layouts."
+    },
+    {
+      "text": "Add Watermark",
+      "type": "shell",
+      "command": ["magick", "composite", "-gravity", "southeast", "watermark.png", "input.jpg", "output.jpg"],
+      "short_description": "Add watermark to image",
+      "long_description": "Add a watermark image to the selected image, positioning it at the southeast corner to protect and brand the content."
+    },
+    {
+      "text": "Convert to PNG",
+      "type": "shell",
+      "command": ["magick", "convert", "input.jpg", "output.png"],
+      "short_description": "Convert image to PNG format",
+      "long_description": "Convert the selected image to PNG format, which supports transparency and is ideal for web graphics."
+    },
+    {
+      "text": "Generate Thumbnails",
+      "type": "shell",
+      "command": ["magick", "convert", "input.jpg", "-thumbnail", "150x150", "thumbnail.jpg"],
+      "short_description": "Create a 150x150 thumbnail",
+      "long_description": "Generate a 150x150 pixel thumbnail of the selected image for use in previews and galleries to ensure faster loading times."
+    },
+    {
+      "text": "Change Image Format",
+      "type": "shell",
+      "command": ["magick", "convert", "input.gif", "input.jpg"],
+      "short_description": "Change image format from GIF to JPEG",
+      "long_description": "Convert an image from GIF to JPEG format to achieve better compression and compatibility with various web platforms."
+    },
+    {
+      "text": "Adjust Brightness & Contrast",
+      "type": "shell",
+      "command": ["magick", "convert", "input.jpg", "-brightness-contrast", "10x15", "output.jpg"],
+      "short_description": "Adjust image brightness and contrast",
+      "long_description": "Modify the brightness by 10 and contrast by 15 to enhance the visual appeal of the image for web presentation."
+    },
+    {
+      "text": "Combine Images Horizontally",
+      "type": "shell",
+      "command": ["magick", "convert", "+append", "image1.jpg", "image2.jpg", "combined.jpg"],
+      "short_description": "Append two images side by side",
+      "long_description": "Combine two images horizontally into a single image, useful for creating galleries or comparison visuals for the web."
+    }
+  ]
+}
