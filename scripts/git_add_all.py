@@ -14,8 +14,11 @@ def add_all_and_commit():
     print(f"Executing command: {commit_command}")
     os.system(commit_command)
     
+    # Ask user for the branch to push to
+    branch = input("Enter the branch to push to: ")
+    
     # Push the changes
-    push_command = 'git push origin main'
+    push_command = f'git push origin {branch}'
     print(f"Executing command: {push_command}")
     os.system(push_command)
 
